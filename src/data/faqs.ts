@@ -27,7 +27,7 @@ export const faqs: FaqItem[] = [
     category: "Appointments",
     question: "How do I request an appointment?",
     answer:
-      "Use the appointment page to prepare an enquiry and send it through WhatsApp when the clinic number is configured, or call and email the clinic. The message is a request only. The clinic confirms the time after checking the diary.",
+      "Use the appointment page to prepare an enquiry and send it through WhatsApp, or call and email the clinic. The message is a request only. The clinic confirms the time after checking the diary.",
   },
   {
     id: "book-confirm",

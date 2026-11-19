@@ -10,6 +10,7 @@ import {
   getPhoneHref,
   getPhoneLabel,
   getWhatsAppHref,
+  getWhatsAppLabel,
 } from "@/lib/contact-links";
 import { Button } from "@/components/ui/button";
 
@@ -27,7 +28,7 @@ export function ContactDetails({
 
   return (
     <div className="grid gap-4">
-      <Detail icon={<Phone className="size-5" aria-hidden="true" />} label="Telephone" tone={tone}>
+      <Detail icon={<Phone className="size-5" aria-hidden="true" />} label="Tulsipur telephone" tone={tone}>
         {phoneHref ? (
           <a href={phoneHref} className={tone === "light" ? "font-semibold text-secondary" : "font-semibold text-action"}>
             {getPhoneLabel()}
@@ -48,7 +49,7 @@ export function ContactDetails({
       <Detail icon={<MessageCircle className="size-5" aria-hidden="true" />} label="WhatsApp" tone={tone}>
         {whatsappHref ? (
           <a href={whatsappHref} className={tone === "light" ? "font-semibold text-secondary" : "font-semibold text-action"} target="_blank" rel="noopener noreferrer">
-            Message the clinic
+            {getWhatsAppLabel()}
           </a>
         ) : (
           <span>WhatsApp number to be added</span>

@@ -30,7 +30,7 @@ export function DoctorDirectory({ doctors, specialties }: { doctors: Doctor[]; s
         })}
       </div>
       {visible.length === 0 ? (
-        <p className="mt-8 text-muted">No sample profiles match that specialty.</p>
+        <p className="mt-8 text-muted">No profiles match that specialty.</p>
       ) : (
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {visible.map((doctor) => (

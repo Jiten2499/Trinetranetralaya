@@ -377,7 +377,7 @@ export const services: ClinicService[] = [
         answer: "Near work and time indoors are linked with short sight becoming more common, but each child’s measurement is individual. An examination is more useful than a screen rule made from a website.",
       },
     ],
-    doctorSlugs: ["sample-c"],
+    doctorSlugs: ["nikita-kc", "sample-c"],
   },
   {
     id: "svc-lasik",

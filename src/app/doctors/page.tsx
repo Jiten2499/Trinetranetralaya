@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Our Doctors",
-  description: "Sample ophthalmology profiles showing how VisionCare will present verified clinicians, qualifications, and areas of care.",
+  description: "Nikita KC, Consultant Pediatric Optometrist and Neuro Vision Therapist, with the qualification supplied by the clinic. Other cards are sample profiles.",
   path: "/doctors",
 });
 
@@ -21,16 +21,16 @@ export default async function DoctorsPage() {
       <PageHero
         eyebrow="Clinical team"
         title="Our doctors"
-        description="These profiles demonstrate the layout. Every card is marked as a sample until the clinic replaces it with a verified clinician."
+        description="Nikita KC is the clinic’s consultant. Cards marked Sample profile are layout placeholders, not members of the team."
         crumbs={[{ name: "Home", path: "/" }, { name: "Our Doctors", path: "/doctors" }]}
       />
       <Container className="py-14">
-        <SampleBanner>Names, portraits, and qualifications are fictional placeholders. Registration numbers and years of experience are omitted because they have not been verified.</SampleBanner>
+        <SampleBanner>Cards marked Sample profile use placeholder names and portraits. They are not clinicians at the clinic.</SampleBanner>
         <div className="mt-8">
           <DoctorDirectory doctors={doctors} specialties={specialties} />
         </div>
       </Container>
-      <CTASection title="Request a consultation" description="Choose a service and, if you wish, a preferred sample profile. The clinic confirms the actual clinician and time." />
+      <CTASection title="Request a consultation" description="You can ask for a consultation with Nikita KC. The clinic confirms the time." />
     </>
   );
 }

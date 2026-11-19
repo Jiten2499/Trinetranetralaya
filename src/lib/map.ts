@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site-config";
-import { hasText, isHttpUrl } from "@/lib/utils";
+import { isHttpUrl } from "@/lib/utils";
 
 const OPENSTREETMAP_TILE_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 const OPENSTREETMAP_ATTRIBUTION =
@@ -10,22 +10,28 @@ export interface ClinicMapLocation {
   longitude: number;
 }
 
-export interface ClinicMapProps {
-  clinicName: string;
+export interface ClinicMapPlace {
+  id: string;
+  label: string;
+  name: string;
   address: string;
-  phone: string;
-  email: string;
   latitude: number | null;
   longitude: number | null;
+  phone: string;
+  email: string;
   directionsUrl: string | null;
+}
+
+export interface ClinicMapProps {
+  places: ClinicMapPlace[];
   tileUrl: string;
   tileAttribution: string;
   tileProvider: string;
 }
 
 export function getClinicCoordinates(
-  latitude: number | null = siteConfig.map.latitude,
-  longitude: number | null = siteConfig.map.longitude,
+  latitude: number | null,
+  longitude: number | null,
 ): ClinicMapLocation | null {
   if (latitude === null || longitude === null) return null;
   if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) return null;
@@ -57,20 +63,6 @@ export function getMapTiles(): { tileUrl: string; tileAttribution: string; tileP
   return { tileUrl, tileAttribution, tileProvider };
 }
 
-export function getMapClinicName(clinicName = siteConfig.map.clinicName): string {
-  const value = clinicName.trim();
-  return value || siteConfig.name;
-}
-
-export function getMapAddress(address = siteConfig.map.address): string {
-  const specific = address.trim();
-  if (specific) return specific;
-  return [siteConfig.contact.address, siteConfig.contact.city, siteConfig.contact.country]
-    .map((part) => part.trim())
-    .filter(Boolean)
-    .join(", ");
-}
-
 export function buildGoogleDirectionsUrl(latitude: number, longitude: number): string {
   const params = new URLSearchParams({
     api: "1",
@@ -79,28 +71,38 @@ export function buildGoogleDirectionsUrl(latitude: number, longitude: number): s
   return `https://www.google.com/maps/dir/?${params.toString()}`;
 }
 
+export function getMapPlaces(): ClinicMapPlace[] {
+  return siteConfig.map.locations.map((place) => {
+    const location = getClinicCoordinates(place.latitude, place.longitude);
+    const explicit = place.directionsUrl.trim();
+    const directionsUrl = isHttpUrl(explicit)
+      ? explicit
+      : location
+        ? buildGoogleDirectionsUrl(location.latitude, location.longitude)
+        : null;
+    return {
+      id: place.id,
+      label: place.label.trim() || place.name.trim() || siteConfig.name,
+      name: place.name.trim() || siteConfig.name,
+      address: place.address.trim(),
+      latitude: location?.latitude ?? null,
+      longitude: location?.longitude ?? null,
+      phone: place.phone.trim(),
+      email: place.email.trim(),
+      directionsUrl,
+    };
+  });
+}
+
 export function getConfiguredDirectionsUrl(): string | null {
-  const explicit = siteConfig.map.googleMapsDirectionsUrl.trim() || siteConfig.contact.directionsUrl.trim();
+  const explicit = siteConfig.contact.directionsUrl.trim();
   if (isHttpUrl(explicit)) return explicit;
-  const location = getClinicCoordinates();
-  if (!location) return null;
-  return buildGoogleDirectionsUrl(location.latitude, location.longitude);
+  return getMapPlaces().find((place) => place.directionsUrl)?.directionsUrl ?? null;
 }
 
 export function getDefaultClinicMapProps(): ClinicMapProps {
-  const location = getClinicCoordinates();
-  const phone = hasText(siteConfig.contact.phoneDisplay)
-    ? siteConfig.contact.phoneDisplay.trim()
-    : siteConfig.contact.phone.trim();
-
   return {
-    clinicName: getMapClinicName(),
-    address: getMapAddress(),
-    phone,
-    email: siteConfig.contact.email.trim(),
-    latitude: location?.latitude ?? null,
-    longitude: location?.longitude ?? null,
-    directionsUrl: getConfiguredDirectionsUrl(),
+    places: getMapPlaces(),
     ...getMapTiles(),
   };
 }

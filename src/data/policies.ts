@@ -60,7 +60,7 @@ export const privacySections: PolicySection[] = [
   {
     heading: "Contact",
     paragraphs: [
-      "Privacy questions should be sent to the clinic email address once it is added in the site configuration. Until then, use the phone or WhatsApp number published on the contact page.",
+      "Privacy questions can be sent to the email address, phone number, or WhatsApp number published on the contact page.",
     ],
   },
 ];

@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { getDoctorBySlug, getDoctors } from "@/services/doctors/doctor-service";
 import { pageMetadata, absoluteUrl } from "@/lib/seo/metadata";
 import { JsonLd } from "@/lib/seo/json-ld";
+import { ClinicGallery } from "@/components/shared/ClinicGallery";
+import { clinicPhotos } from "@/data/clinic-gallery";
 
 type DoctorPageProps = { params: Promise<{ slug: string }> };
 
@@ -41,9 +43,9 @@ export default async function DoctorProfilePage({ params }: DoctorPageProps) {
         <JsonLd
           data={{
             "@context": "https://schema.org",
-            "@type": "Physician",
+            "@type": "Person",
             name: doctor.name,
-            medicalSpecialty: doctor.specialization,
+            jobTitle: doctor.designation,
             url: absoluteUrl(`/doctors/${doctor.slug}`),
             ...(doctor.registration ? { identifier: doctor.registration } : {}),
           }}
@@ -66,10 +68,19 @@ export default async function DoctorProfilePage({ params }: DoctorPageProps) {
           <p className="mt-2 text-lg font-semibold text-action">{doctor.designation}</p>
           <p className="mt-2 text-muted">{doctor.specialization}</p>
           <dl className="mt-8 grid gap-5 sm:grid-cols-2">
-            <Info title="Qualifications" text={doctor.qualifications.join(". ")} note="Not verified." />
-            <Info title="Registration" text={doctor.registration ?? "Not published. Add a verified registration number or leave this blank."} />
+            <Info title="Qualifications" lines={doctor.qualifications} note={doctor.isSample ? "Not verified." : undefined} />
+            <Info title="Registration" text={doctor.registration ?? (doctor.isSample ? "Not published. Add a verified registration number or leave this blank." : "A registration number has not been published.")} />
             <Info title="Experience" text={doctor.experienceYears ? `${doctor.experienceYears} years` : "Years of experience are not shown until the clinic verifies them."} />
-            <Info title="Languages" text={`${doctor.languages.join(", ")} — sample list, confirm with the clinic.`} />
+            <Info
+              title="Languages"
+              text={
+                doctor.languages.length === 0
+                  ? "Not published."
+                  : doctor.isSample
+                    ? `${doctor.languages.join(", ")} — sample list, confirm with the clinic.`
+                    : doctor.languages.join(", ")
+              }
+            />
             <Info title="Consultation schedule" text={doctor.schedule ?? "Clinic days will be published after the schedule is confirmed."} />
           </dl>
           <h2 className="mt-10 text-3xl">Biography</h2>
@@ -83,16 +94,35 @@ export default async function DoctorProfilePage({ params }: DoctorPageProps) {
           <Button href="/appointment" className="mt-8">Book an appointment</Button>
         </div>
       </Container>
+      {doctor.slug === "nikita-kc" ? (
+        <Container className="pb-14">
+          <ClinicGallery
+            photos={clinicPhotos}
+            title="Clinic photographs"
+            description="Photographs from Nikita KC’s clinic work, including before-and-after pictures labeled vision therapy or neuro vision therapy. Each picture is one person’s visit. It is not a guarantee of the same result."
+          />
+        </Container>
+      ) : null}
       <CTASection />
     </>
   );
 }
 
-function Info({ title, text, note }: { title: string; text: string; note?: string }) {
+function Info({ title, text, lines, note }: { title: string; text?: string; lines?: string[]; note?: string }) {
   return (
     <div className="rounded-2xl border border-border bg-surface p-4">
       <dt className="text-sm font-semibold uppercase tracking-wide text-muted">{title}</dt>
-      <dd className="mt-2">{text}</dd>
+      <dd className="mt-2">
+        {lines ? (
+          <ul className="grid gap-1">
+            {lines.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+        ) : (
+          text
+        )}
+      </dd>
       {note ? <p className="mt-1 text-sm text-action">{note}</p> : null}
     </div>
   );

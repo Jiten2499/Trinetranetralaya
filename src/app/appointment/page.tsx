@@ -31,7 +31,10 @@ export default async function AppointmentPage() {
           <AppointmentForm
             whatsappReady={isWhatsAppConfigured()}
             services={services.map((service) => ({ id: service.slug, label: service.title }))}
-            doctors={doctors.map((doctor) => ({ id: doctor.slug, label: `${doctor.name} (sample profile)` }))}
+            doctors={doctors.map((doctor) => ({
+              id: doctor.slug,
+              label: doctor.isSample ? `${doctor.name} (sample profile)` : doctor.name,
+            }))}
           />
         </div>
         <aside className="h-fit rounded-2xl bg-background-secondary p-6">

@@ -15,6 +15,8 @@ import { ContactDetails, HoursCard } from "@/components/shared/ContactDetails";
 import { getServices } from "@/services/clinic-services/service-service";
 import { getDoctors } from "@/services/doctors/doctor-service";
 import { getFacilities, getTestimonials } from "@/services/clinic/content-service";
+import { ClinicGallery } from "@/components/shared/ClinicGallery";
+import { clinicPhotos } from "@/data/clinic-gallery";
 import { getFaqs } from "@/services/clinic/clinic-service";
 import { getPublishedArticles } from "@/services/blog/blog-repository";
 
@@ -142,10 +144,20 @@ export async function HomePage() {
 
       <section className="py-16 md:py-20">
         <Container>
-          <SectionHeading eyebrow="Specialists" title="Meet the sample profiles" description="These cards show the layout only. They are not verified clinicians and must be replaced before launch." />
-          <div className="mt-6">
-            <SampleBanner>Doctor names, qualifications, and portraits on this website are demonstration content.</SampleBanner>
-          </div>
+          <SectionHeading
+            eyebrow="Specialists"
+            title={doctors.some((doctor) => !doctor.isSample) ? "Our consultant" : "Meet the sample profiles"}
+            description={
+              doctors.some((doctor) => !doctor.isSample)
+                ? "Nikita KC is the clinic’s Consultant Pediatric Optometrist and Neuro Vision Therapist. Cards marked Sample profile are not members of the team."
+                : "These cards show the layout only. They are not verified clinicians and must be replaced before launch."
+            }
+          />
+          {doctors.some((doctor) => doctor.isSample) ? (
+            <div className="mt-6">
+              <SampleBanner>Cards marked Sample profile use placeholder names and portraits.</SampleBanner>
+            </div>
+          ) : null}
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {doctors.map((doctor) => (
               <DoctorCard key={doctor.id} doctor={doctor} />
@@ -208,6 +220,17 @@ export async function HomePage() {
         </Container>
       </section>
 
+      <section className="py-16 md:py-20">
+        <Container>
+          <ClinicGallery
+            photos={clinicPhotos}
+            title="Photographs from the clinic"
+            description="Before-and-after pictures and visits at the clinic. These are individual photographs supplied by the clinic, not a promised result."
+          />
+          <Button href="/about#clinic-photographs" variant="outline" className="mt-8">See them on the about page</Button>
+        </Container>
+      </section>
+
       {testimonials.length > 0 ? (
         <section className="py-16 md:py-20">
           <Container>
@@ -246,7 +269,7 @@ export async function HomePage() {
         <Container className="grid gap-8 lg:grid-cols-2">
           <div className="rounded-2xl border border-border bg-surface p-6">
             <h2 className="text-3xl">Visit the clinic</h2>
-            <p className="mt-3 text-muted">Address, telephone, and map links publish automatically once they are added to the site configuration.</p>
+            <p className="mt-3 text-muted">The Tulsipur telephone, WhatsApp number, and email are listed here. Opening hours are still to be confirmed.</p>
             <div className="mt-6">
               <ContactDetails />
             </div>

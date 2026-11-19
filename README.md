@@ -66,17 +66,15 @@ Empty phone, email, WhatsApp, address, and social fields render as “to be adde
 
 The contact page uses a reusable OpenStreetMap map (`src/components/map/ClinicMap.tsx`) loaded with Leaflet on the client only. Tiles load as the visitor pans or zooms. They are not preloaded or bulk-downloaded. The map shows the OpenStreetMap contributors credit.
 
-In `siteConfig.map`:
+In `siteConfig.map.locations`, each branch has its own name, address, phone, email, directions link, and coordinates:
 
-- `latitude` and `longitude` — the clinic’s real coordinates. Leave both `null` until they are confirmed. The page then shows a text placeholder instead of a pin. Do not use a city centre or an approximate point.
-- `address` — optional marker address. When empty, the map uses `contact.address`, `contact.city`, and `contact.country`.
-- `clinicName` — optional marker name. When empty, the site name is used.
-- `googleMapsDirectionsUrl` — optional `https` link for Get Directions. If empty, and coordinates exist, the button opens Google Maps directions to those coordinates. `contact.directionsUrl` is used when the map field is empty.
+- `latitude` and `longitude` — that door’s real coordinates. Leave both `null` until they are confirmed. The address still appears, without a pin. Do not use a city centre, a ward centre, or an approximate point.
+- `directionsUrl` — optional `https` link for Get Directions. If empty and coordinates exist, the button opens Google Maps directions to those coordinates.
 - `mapTileProvider` — label for the tile source. The default is `openstreetmap`.
 - `mapTileUrl` — `https` tile template containing `{z}`, `{x}`, and `{y}`. The default is `https://tile.openstreetmap.org/{z}/{x}/{y}.png`.
 - `mapTileAttribution` — visible credit for the tile provider. Change this when you change `mapTileUrl`.
 
-The same `ClinicMap` component can be used on a future branch page by passing that branch’s name, address, coordinates, and directions link.
+When two or more locations have coordinates, the map frames all of them. `contact.directionsUrl` still overrides the single directions button outside the map.
 
 ## WhatsApp appointment enquiries
 

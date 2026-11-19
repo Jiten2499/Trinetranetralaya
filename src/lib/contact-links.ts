@@ -71,6 +71,13 @@ export function getPhoneLabel(): string {
   return "Telephone number to be added";
 }
 
+export function getWhatsAppLabel(number = siteConfig.contact.whatsapp): string {
+  const digits = digitsOnly(number);
+  if (digits.startsWith("977") && digits.length === 13) return digits.slice(3);
+  if (digits.length >= 8) return digits;
+  return "WhatsApp number to be added";
+}
+
 export function getAddressLines(): string[] {
   const lines = [
     siteConfig.contact.address.trim(),

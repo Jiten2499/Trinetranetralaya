@@ -5,6 +5,32 @@ const sampleNotice =
 
 export const doctors: Doctor[] = [
   {
+    id: "doctor-nikita-kc",
+    slug: "nikita-kc",
+    name: "Nikita KC",
+    designation: "Consultant Pediatric Optometrist and Neuro Vision Therapist",
+    qualifications: [
+      "Bachelor in Optometry, Rajiv Gandhi University of Health Sciences, Karnataka, India",
+      "Sankara College of Optometry, Bangalore",
+      "Masters in Optometry, CTU, Punjab, India",
+      "Sankara College of Optometry, Ludhiana, India",
+      "FASCO — Neuro Vision Therapy, India",
+    ],
+    registration: null,
+    specialization: "Pediatric optometry and neuro vision therapy",
+    specialties: ["Pediatric optometry", "Neuro vision therapy"],
+    biography:
+      "Nikita KC is a Consultant Pediatric Optometrist and Neuro Vision Therapist at TriNetra Netralaya Aakhaa Upachaar Kendra. Her qualifications are a Bachelor in Optometry from Rajiv Gandhi University of Health Sciences, Karnataka, India; Sankara College of Optometry, Bangalore; a Masters in Optometry from CTU, Punjab, India; Sankara College of Optometry, Ludhiana, India; and FASCO in Neuro Vision Therapy, India.",
+    image: "/images/nikita-kc.jpg",
+    imageAlt: "Nikita KC seated beside a slit lamp.",
+    experienceYears: null,
+    expertise: ["Pediatric optometry", "Neuro vision therapy"],
+    languages: [],
+    schedule: null,
+    isActive: true,
+    isSample: false,
+  },
+  {
     id: "doctor-sample-a",
     slug: "sample-a",
     name: "Dr. A. Sample",

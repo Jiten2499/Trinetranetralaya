@@ -3,11 +3,15 @@ import { Container } from "@/components/shared/Container";
 import { PageHero } from "@/components/shared/PageHero";
 import { CTASection } from "@/components/shared/CTASection";
 import { DraftNotice } from "@/components/shared/Notices";
+import { Button } from "@/components/ui/button";
+import { ClinicGallery } from "@/components/shared/ClinicGallery";
+import { clinicPhotos } from "@/data/clinic-gallery";
 import Image from "next/image";
 
 export const metadata = pageMetadata({
   title: "About Us",
-  description: "Learn how VisionCare Eye Clinic approaches examinations, explanations, and follow-up for patients and families.",
+  description:
+    "TriNetra Netralaya Aakhaa Upachaar Kendra in Tulsipur 5, Dang, inaugurated on 14th Jestha 2079 BS, and its first branch in Ghorahi.",
   path: "/about",
 });
 
@@ -23,17 +27,17 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About the clinic"
-        title="Eye care that leaves you better informed"
-        description="VisionCare Eye Clinic is built around thorough examinations, plain-language explanations, and follow-up that patients can actually use."
+        title="TriNetra Netralaya Aakhaa Upachaar Kendra"
+        description="An eye-care centre in Tulsipur 5, Dang, with a first branch in Ghorahi."
         crumbs={[{ name: "Home", path: "/" }, { name: "About Us", path: "/about" }]}
       />
       <Container className="grid gap-12 py-14">
-        <DraftNotice>Historical dates, founder names, and registration details are intentionally absent. Add only what the clinic can verify.</DraftNotice>
+        <DraftNotice>Founder names and registration numbers are not published until the clinic supplies them.</DraftNotice>
         <section className="grid items-center gap-8 lg:grid-cols-2">
           <div>
             <h2 className="text-3xl">The clinic</h2>
             <p className="mt-4 text-muted">
-              At VisionCare Eye Clinic, good vision is treated as part of ordinary life: reading a schoolbook, driving at dusk, recognising a grandchild, or working through a long day at a screen. The clinic’s work is to examine the eyes carefully and to explain the result without rushing the person who has to live with it.
+              TriNetra Netralaya Aakhaa Upachaar Kendra is in Tulsipur 5, Dang. The centre was inaugurated on 14th Jestha 2079 BS. Its work is to examine the eyes carefully and to explain the result without rushing the person who has to live with it.
             </p>
             <p className="mt-4 text-muted">
               This website introduces the services, the way a visit unfolds, and the questions worth asking. It does not replace the examination, and it does not publish claims the clinic has not confirmed.
@@ -44,10 +48,21 @@ export default function AboutPage() {
           </div>
         </section>
         <section>
-          <h2 className="text-3xl">History</h2>
-          <p className="mt-4 max-w-3xl text-muted">
-            The clinic’s founding year, original location, and milestones should be written here by the people who were part of them. Until that text is supplied, this section stays a placeholder rather than an invented timeline.
-          </p>
+          <h2 className="text-3xl">About</h2>
+          <dl className="mt-6 grid gap-5 md:grid-cols-2">
+            <div className="rounded-2xl border border-border bg-surface p-6">
+              <dt className="text-sm font-semibold uppercase tracking-wide text-muted">Centre</dt>
+              <dd className="mt-2 text-2xl">TriNetra Netralaya Aakhaa Upachaar Kendra</dd>
+              <dd className="mt-2 text-muted">Tulsipur 5, Dang</dd>
+              <dd className="mt-4 text-muted">Inaugurated on 14th Jestha 2079 BS</dd>
+            </div>
+            <div className="rounded-2xl border border-border bg-surface p-6">
+              <dt className="text-sm font-semibold uppercase tracking-wide text-muted">First branch</dt>
+              <dd className="mt-2 text-2xl">Ghorahi</dd>
+              <dd className="mt-2 text-muted">Ghorahi 15, Sadaka Bhibhag Road, Dang</dd>
+              <dd className="mt-4 text-muted">Inaugurated on 3rd Shrawan 2083 BS</dd>
+            </div>
+          </dl>
         </section>
         <section className="grid gap-5 md:grid-cols-2">
           <article className="rounded-2xl border border-border bg-surface p-6">
@@ -83,8 +98,17 @@ export default function AboutPage() {
         </section>
         <section>
           <h2 className="text-3xl">The medical team</h2>
-          <p className="mt-4 max-w-3xl text-muted">Doctor profiles currently on the site are labelled samples. When the clinic adds real clinicians, each profile should include the name they practise under, verified qualifications, and a registration number only if it has been checked.</p>
+          <p className="mt-4 max-w-3xl text-muted">
+            Nikita KC is the clinic’s Consultant Pediatric Optometrist and Neuro Vision Therapist. Her qualifications are a Bachelor in Optometry from Rajiv Gandhi University of Health Sciences, Karnataka, India; Sankara College of Optometry, Bangalore; a Masters in Optometry from CTU, Punjab, India; Sankara College of Optometry, Ludhiana, India; and FASCO in Neuro Vision Therapy, India. The Tulsipur telephone is 9768862742, WhatsApp is 9868984602, and email is netralayatrinetra14@gmail.com. Other doctor cards remain labelled as samples until the clinic replaces them. A registration number is shown only after the clinic supplies one.
+          </p>
+          <Button href="/doctors/nikita-kc" className="mt-6">View Nikita KC’s profile</Button>
         </section>
+        <ClinicGallery
+          id="clinic-photographs"
+          photos={clinicPhotos}
+          title="Photographs from the clinic"
+          description="These pictures were supplied by the clinic, including before-and-after photographs labeled neuro vision therapy or vision therapy. They show individual visits. They are not a promise that another person will have the same result, and the people in them are not named."
+        />
         <section>
           <h2 className="text-3xl">Why patients make an enquiry</h2>
           <p className="mt-4 max-w-3xl text-muted">People come for a first pair of glasses, a diabetic retinal check, a child’s turned eye, or a gradual blur that glasses no longer fix. The common thread is wanting a person, not a webpage, to look at the eye and explain it.</p>

@@ -1,3 +1,15 @@
+export interface MapLocation {
+  id: string;
+  label: string;
+  name: string;
+  address: string;
+  latitude: number | null;
+  longitude: number | null;
+  phone: string;
+  email: string;
+  directionsUrl: string;
+}
+
 export interface DayHours {
   day: string;
   opens: string | null;
@@ -27,14 +39,10 @@ export interface SiteConfig {
     directionsUrl: string;
   };
   map: {
-    latitude: number | null;
-    longitude: number | null;
-    address: string;
-    clinicName: string;
-    googleMapsDirectionsUrl: string;
     mapTileProvider: string;
     mapTileUrl: string;
     mapTileAttribution: string;
+    locations: MapLocation[];
   };
   hours: DayHours[];
   hoursConfirmed: boolean;
@@ -65,31 +73,50 @@ export const siteConfig: SiteConfig = {
   locale: "en",
   logo: null,
   contact: {
-    phone: "",
-    phoneDisplay: "",
-    whatsapp: "",
-    email: "",
+    phone: "+9779768862742",
+    phoneDisplay: "9768862742",
+    whatsapp: "9779868984602",
+    email: "netralayatrinetra14@gmail.com",
     address: "G Line, Birendra Chowk, Shivnagar, Tulsipur Ward 5",
     city: "Tulsipur, Dang",
     country: "Nepal",
     directionsUrl: "",
   },
   /**
-   * Leave latitude and longitude null until the clinic confirms its real coordinates.
-   * An empty map is shown instead of an approximate or invented pin.
-   * map.address and map.clinicName override the contact address and site name on the marker when set.
+   * Leave a location's latitude and longitude null until that door is confirmed.
+   * A missing pin is shown as an address instead of a guessed point.
    * Change mapTileUrl and mapTileAttribution together if the tile provider changes.
    */
   map: {
-    latitude: 28.1323814,
-    longitude: 82.2985306,
-    address: "G Line, Birendra Chowk, Shivnagar, Tulsipur Ward 5, Tulsipur, Dang 22412, Nepal",
-    clinicName: "",
-    googleMapsDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=28.1323814,82.2985306",
     mapTileProvider: "openstreetmap",
     mapTileUrl: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     mapTileAttribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    locations: [
+      {
+        id: "tulsipur",
+        label: "Tulsipur",
+        name: "TriNetra Netralaya Aakhaa Upachaar Kendra",
+        address: "G Line, Birendra Chowk, Shivnagar, Tulsipur Ward 5, Tulsipur, Dang 22412, Nepal",
+        latitude: 28.1323814,
+        longitude: 82.2985306,
+        phone: "9768862742",
+        email: "netralayatrinetra14@gmail.com",
+        directionsUrl: "https://www.google.com/maps/dir/?api=1&destination=28.1323814,82.2985306",
+      },
+      {
+        id: "ghorahi",
+        label: "Ghorahi",
+        name: "TriNetra Netralaya Aakhaa Upachaar Kendra",
+        address: "Ghorahi 15, Sadaka Bhibhag Road, Dang, Nepal",
+        latitude: null,
+        longitude: null,
+        phone: "",
+        email: "netralayatrinetra14@gmail.com",
+        directionsUrl:
+          "https://www.google.com/maps/search/?api=1&query=Ghorahi%2015%2C%20Sadaka%20Bhibhag%20Road%2C%20Dang%2C%20Nepal",
+      },
+    ],
   },
   hoursConfirmed: false,
   hours: [
@@ -110,6 +137,6 @@ export const siteConfig: SiteConfig = {
     whatsapp: "",
   },
   features: {
-    showSampleTestimonials: true,
+    showSampleTestimonials: false,
   },
 };

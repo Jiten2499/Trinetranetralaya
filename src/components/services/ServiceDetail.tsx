@@ -75,8 +75,12 @@ export function ServiceDetail({ service, related, doctors }: { service: ClinicSe
       {doctors.length > 0 ? (
         <section className="bg-background-secondary py-14">
           <Container>
-            <h2 className="text-3xl">Relevant sample profiles</h2>
-            <p className="mt-2 max-w-2xl text-muted">These profiles are demonstration content linked to the topic. They are not a recommendation of a named clinician.</p>
+            <h2 className="text-3xl">{doctors.every((doctor) => doctor.isSample) ? "Relevant sample profiles" : "Clinicians for this service"}</h2>
+            <p className="mt-2 max-w-2xl text-muted">
+              {doctors.every((doctor) => doctor.isSample)
+                ? "These profiles are demonstration content linked to the topic. They are not a recommendation of a named clinician."
+                : "The consultant listed here is part of the clinic team. Cards marked Sample profile are not."}
+            </p>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {doctors.map((doctor) => (
                 <DoctorCard key={doctor.id} doctor={doctor} />

@@ -23,7 +23,15 @@ export function DoctorCard({ doctor }: { doctor: Doctor }) {
         <h3 className="text-2xl">{doctor.name}</h3>
         <p className="mt-1 text-sm font-semibold text-action">{doctor.designation}</p>
         <p className="mt-3 text-sm text-muted">{doctor.specialization}</p>
-        <p className="mt-3 text-sm text-muted">Qualifications shown here are placeholders until the clinic verifies them.</p>
+        {doctor.isSample ? (
+          <p className="mt-3 text-sm text-muted">Qualifications shown here are placeholders until the clinic verifies them.</p>
+        ) : (
+          <ul className="mt-3 grid gap-1 text-sm text-muted">
+            {doctor.qualifications.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        )}
         <Link href={`/doctors/${doctor.slug}`} className="mt-4 font-semibold text-action">
           View profile
         </Link>
