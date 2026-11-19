@@ -4,7 +4,7 @@ export const privacySections: PolicySection[] = [
   {
     heading: "Review before publication",
     paragraphs: [
-      "This privacy policy is a structured draft for VisionCare Eye Clinic. It must be reviewed and approved by the clinic, and adapted to the laws that apply in Nepal, before the website is used to collect patient information.",
+      "This privacy policy is a structured draft for TriNetra Netralaya. It must be reviewed and approved by the clinic, and adapted to the laws that apply in Nepal, before the website is used to collect patient information.",
     ],
   },
   {
@@ -160,7 +160,7 @@ export const accessibilitySections: PolicySection[] = [
   {
     heading: "Our aim",
     paragraphs: [
-      "VisionCare Eye Clinic wants this website to be usable by people with low vision, by people who navigate with a keyboard, and by people using screen readers. The target is WCAG 2.2 Level AA.",
+      "TriNetra Netralaya wants this website to be usable by people with low vision, by people who navigate with a keyboard, and by people using screen readers. The target is WCAG 2.2 Level AA.",
     ],
   },
   {

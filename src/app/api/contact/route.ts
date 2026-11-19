@@ -25,18 +25,23 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, code: "invalid" }, { status: 400 });
   }
 
+  const payload: Record<string, string> = {
+    name: parsed.data.fullName,
+    phone: parsed.data.phone,
+    subject: parsed.data.subject,
+    message: parsed.data.message,
+    _subject: `Website enquiry: ${parsed.data.subject}`,
+  };
+  if (parsed.data.email) {
+    payload.email = parsed.data.email;
+    payload._replyto = parsed.data.email;
+  }
+
   try {
     const response = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        name: parsed.data.fullName,
-        phone: parsed.data.phone,
-        email: parsed.data.email ?? "",
-        subject: parsed.data.subject,
-        message: parsed.data.message,
-        _subject: `Website enquiry: ${parsed.data.subject}`,
-      }),
+      body: JSON.stringify(payload),
       signal: AbortSignal.timeout(8000),
     });
 

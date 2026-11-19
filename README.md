@@ -1,4 +1,4 @@
-# VisionCare Eye Clinic
+# TriNetra Netralaya
 
 Patient website for an ophthalmology clinic. Next.js App Router, React 19, TypeScript, and Tailwind CSS. Clinic facts, doctors, and services come from typed local data. Articles come from WordPress when it is configured. There is no custom database in this project.
 

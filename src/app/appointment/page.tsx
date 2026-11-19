@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Book an Appointment",
-  description: "Send an appointment enquiry to VisionCare Eye Clinic. The clinic confirms availability. The website does not reserve a time.",
+  description: "Send an appointment enquiry to TriNetra Netralaya. The clinic confirms availability. The website does not reserve a time.",
   path: "/appointment",
 });
 

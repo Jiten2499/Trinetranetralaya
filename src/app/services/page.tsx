@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Eye Care Services",
-  description: "Explore eye examinations, cataract, glaucoma, retina, children’s eye care, cornea, dry eye, and optical services at VisionCare Eye Clinic.",
+  description: "Explore eye examinations, cataract, glaucoma, retina, children’s eye care, cornea, dry eye, and optical services at TriNetra Netralaya.",
   path: "/services",
 });
 

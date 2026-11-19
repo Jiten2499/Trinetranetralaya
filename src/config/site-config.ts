@@ -64,11 +64,11 @@ export interface SiteConfig {
  * Do not put secrets in this file. Form and WordPress credentials stay in environment variables.
  */
 export const siteConfig: SiteConfig = {
-  name: "VisionCare Eye Clinic",
-  shortName: "VisionCare",
+  name: "TriNetra Netralaya",
+  shortName: "TriNetra",
   tagline: "Better Vision. Brighter Everyday.",
   description:
-    "VisionCare Eye Clinic provides comprehensive eye examinations, patient education, and guidance for common eye conditions for people of all ages.",
+    "TriNetra Netralaya provides comprehensive eye examinations, patient education, and guidance for common eye conditions for people of all ages.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "",
   locale: "en",
   logo: null,

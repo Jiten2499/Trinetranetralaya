@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Accessibility",
-  description: "Accessibility aims and a way to report barriers on the VisionCare Eye Clinic website.",
+  description: "Accessibility aims and a way to report barriers on the TriNetra Netralaya website.",
   path: "/accessibility",
 });
 

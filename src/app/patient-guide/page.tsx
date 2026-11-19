@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Patient Guide",
-  description: "How to prepare for an eye examination at VisionCare Eye Clinic, what to bring, and what the website cannot decide for you.",
+  description: "How to prepare for an eye examination at TriNetra Netralaya, what to bring, and what the website cannot decide for you.",
   path: "/patient-guide",
 });
 

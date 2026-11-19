@@ -132,7 +132,7 @@ export async function HomePage() {
             <SectionHeading
               eyebrow="The clinic"
               title="A calm place to understand your eyes"
-              description="VisionCare Eye Clinic is being prepared as a patient-facing site for examinations, explanations, and follow-up. The history, address, and team credentials on these pages are ready for the clinic to replace with verified details."
+              description="TriNetra Netralaya is being prepared as a patient-facing site for examinations, explanations, and follow-up. The history, address, and team credentials on these pages are ready for the clinic to replace with verified details."
             />
             <p className="mt-4 text-muted">
               Good vision supports school, work, driving, and the ordinary pleasure of recognising a face across a room. The clinic’s role is to examine carefully, say what was found, and agree a next step you can actually follow.

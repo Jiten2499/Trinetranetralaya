@@ -8,7 +8,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Facilities and Technology",
-  description: "Examination rooms and eye-care equipment for VisionCare Eye Clinic to confirm before publication.",
+  description: "Examination rooms and eye-care equipment for TriNetra Netralaya to confirm before publication.",
   path: "/facilities",
 });
 

@@ -9,7 +9,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Contact Us",
-  description: "Call, email, or message VisionCare Eye Clinic. The contact form sends a message only when a delivery service is configured.",
+  description: "Call, email, or message TriNetra Netralaya. The contact form sends a message only when a delivery service is configured.",
   path: "/contact",
 });
 

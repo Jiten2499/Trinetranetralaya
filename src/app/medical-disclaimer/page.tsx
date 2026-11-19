@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Medical Disclaimer",
-  description: "Website information from VisionCare Eye Clinic is educational and does not replace an eye examination.",
+  description: "Website information from TriNetra Netralaya is educational and does not replace an eye examination.",
   path: "/medical-disclaimer",
 });
 

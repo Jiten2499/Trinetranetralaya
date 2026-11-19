@@ -76,7 +76,7 @@ export const facilities: Facility[] = [
     id: "theatre",
     title: "Operation theatre",
     description:
-      "Some eye procedures are performed in an operating theatre. This photograph is a general theatre interior for illustration. It is not a photograph of VisionCare, and theatre access has not been confirmed.",
+      "Some eye procedures are performed in an operating theatre. This photograph is a general theatre interior for illustration. It is not a photograph of TriNetra Netralaya, and theatre access has not been confirmed.",
     purpose: "Provides a sterile setting if the clinic offers procedures that require it.",
     image: "/images/theatre.jpg",
     imageAlt: "Illustrative photograph of a general operating theatre. Not this clinic.",

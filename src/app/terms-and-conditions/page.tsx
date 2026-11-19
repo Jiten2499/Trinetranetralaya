@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Terms and Conditions",
-  description: "Draft terms for using the VisionCare Eye Clinic website and sending an appointment enquiry.",
+  description: "Draft terms for using the TriNetra Netralaya website and sending an appointment enquiry.",
   path: "/terms-and-conditions",
 });
 

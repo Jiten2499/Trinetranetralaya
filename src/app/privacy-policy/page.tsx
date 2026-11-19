@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = pageMetadata({
   title: "Privacy Policy",
-  description: "How VisionCare Eye Clinic’s website handles contact details, enquiries, and third-party services.",
+  description: "How TriNetra Netralaya’s website handles contact details, enquiries, and third-party services.",
   path: "/privacy-policy",
 });
 

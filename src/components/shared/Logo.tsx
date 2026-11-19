@@ -9,27 +9,40 @@ export function Logo({
   compact?: boolean;
 }) {
   const light = tone === "light";
+  const [first, ...rest] = siteConfig.name.split(" ");
+  const second = rest.join(" ");
+  const mark = light ? "#243E58" : "#182F45";
 
   return (
-    <span className="flex items-center gap-3">
-      <svg viewBox="0 0 40 40" className="size-10 shrink-0" aria-hidden="true">
-        <rect width="40" height="40" rx="12" fill={light ? "#243E58" : "#182F45"} />
+    <span className="flex items-center gap-2.5">
+      <svg viewBox="0 0 40 40" className="size-11 shrink-0" aria-hidden="true">
+        <rect width="40" height="40" rx="13" fill={mark} />
         <path
-          d="M6 20.5c4.2-6.2 8.4-8.5 14-8.5s9.8 2.3 14 8.5c-4.2 6.2-8.4 8.5-14 8.5s-9.8-2.3-14-8.5z"
+          d="M7 21c4-6 8-8.2 13-8.2S29 15 33 21c-4 6-8 8.2-13 8.2S11 27 7 21z"
           fill="none"
           stroke="#F4A261"
           strokeWidth="1.8"
         />
-        <circle cx="20" cy="20.5" r="4.2" fill="#E66A35" />
-        <circle cx="21.2" cy="19.2" r="1.3" fill="#FFF9F3" />
+        <circle cx="20" cy="21" r="4.1" fill="#E66A35" />
+        <circle cx="21.3" cy="19.7" r="1.25" fill="#FFF9F3" />
+        <circle cx="13.2" cy="11.2" r="1.35" fill="#F4A261" />
+        <circle cx="20" cy="9.4" r="1.55" fill="#F4A261" />
+        <circle cx="26.8" cy="11.2" r="1.35" fill="#F4A261" />
       </svg>
       <span className="min-w-0">
-        <span className={cn("block font-display text-lg leading-none", light ? "text-footer-foreground" : "text-foreground")}>
-          {compact ? siteConfig.shortName : siteConfig.name}
+        <span className={cn("block font-display text-[1.15rem] leading-none tracking-tight sm:text-[1.3rem]", light ? "text-footer-foreground" : "text-foreground")}>
+          {first}
         </span>
-        <span className={cn("mt-1 block text-xs tracking-wide", light ? "text-footer-muted" : "text-muted")}>
-          Eye clinic
-        </span>
+        {second ? (
+          <span className={cn("mt-0.5 block font-display text-[1.15rem] leading-none tracking-tight sm:text-[1.3rem]", light ? "text-secondary" : "text-action")}>
+            {second}
+          </span>
+        ) : null}
+        {compact ? null : (
+          <span className={cn("mt-1.5 block text-[0.65rem] font-semibold uppercase tracking-[0.14em]", light ? "text-footer-muted" : "text-muted")}>
+            Aakhaa Upachaar Kendra
+          </span>
+        )}
       </span>
     </span>
   );
