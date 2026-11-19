@@ -1,0 +1,54 @@
+/*
+  Theme tokens. Components use these variables through Tailwind semantic colors.
+  To switch themes, change themeConfig.active in src/config/theme-config.ts.
+  Add a new [data-theme="name"] block here without editing page components.
+*/
+
+:root,
+[data-theme="warm"] {
+  --background: #fff9f3;
+  --background-secondary: #f9efe5;
+  --surface: #ffffff;
+  --foreground: #18324b;
+  --muted: #66717b;
+  --border: #eadfd5;
+  --primary: #e66a35;
+  --primary-hover: #c95426;
+  --primary-foreground: #ffffff;
+  --secondary: #f4a261;
+  --secondary-foreground: #18324b;
+  --action: #c44718;
+  --action-hover: #a33b14;
+  --success: #21865b;
+  --success-foreground: #ffffff;
+  --footer: #182f45;
+  --footer-foreground: #f7f1ea;
+  --footer-muted: #d5c7ba;
+  --ring: #9a3e16;
+  --danger: #9f2d2d;
+  --shadow: 0 18px 40px -28px rgb(24 50 75 / 0.45);
+}
+
+[data-theme="clinical-blue"] {
+  --background: #f4f8fb;
+  --background-secondary: #e7f0f7;
+  --surface: #ffffff;
+  --foreground: #16324a;
+  --muted: #5c6b78;
+  --border: #d5e2ec;
+  --primary: #2b7cb5;
+  --primary-hover: #1d6394;
+  --primary-foreground: #ffffff;
+  --secondary: #7eb6d9;
+  --secondary-foreground: #16324a;
+  --action: #185c8a;
+  --action-hover: #12486d;
+  --success: #1f7a4d;
+  --success-foreground: #ffffff;
+  --footer: #10283a;
+  --footer-foreground: #f3f7fb;
+  --footer-muted: #c5d4e0;
+  --ring: #185c8a;
+  --danger: #9f2d2d;
+  --shadow: 0 18px 40px -28px rgb(16 40 58 / 0.45);
+}

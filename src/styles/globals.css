@@ -1,0 +1,237 @@
+@import "tailwindcss";
+@import "./themes.css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-action: var(--action);
+  --color-action-hover: var(--action-hover);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-footer: var(--footer);
+  --color-footer-foreground: var(--footer-foreground);
+  --color-footer-muted: var(--footer-muted);
+  --color-ring: var(--ring);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-source-sans);
+  --font-display: var(--font-fraunces);
+  --shadow-card: var(--shadow);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+  color-scheme: light;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-source-sans), "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--secondary);
+  color: var(--foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 80;
+  border-radius: 0.75rem;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.article-prose {
+  color: var(--foreground);
+  font-size: 1.075rem;
+  line-height: 1.8;
+}
+
+.article-prose > * + * {
+  margin-top: 1rem;
+}
+
+.article-prose h2,
+.article-prose h3 {
+  margin-top: 2rem;
+  scroll-margin-top: 6.5rem;
+}
+
+.article-prose h2 {
+  font-size: 1.75rem;
+}
+
+.article-prose h3 {
+  font-size: 1.35rem;
+}
+
+.article-prose a {
+  color: var(--action);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+.article-prose a:hover {
+  text-decoration: underline;
+}
+
+.article-prose ul,
+.article-prose ol {
+  padding-left: 1.25rem;
+}
+
+.article-prose ul {
+  list-style: disc;
+}
+
+.article-prose ol {
+  list-style: decimal;
+}
+
+.article-prose blockquote {
+  border-left: 3px solid var(--primary);
+  background: var(--background-secondary);
+  padding: 0.9rem 1rem;
+  color: var(--foreground);
+}
+
+.article-prose img {
+  height: auto;
+  max-width: 100%;
+  border-radius: 1rem;
+}
+
+.clinic-map-pin-wrap {
+  background: transparent;
+  border: 0;
+}
+
+.clinic-map-pin {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 4px auto 0;
+  border: 3px solid var(--surface);
+  border-radius: 999px;
+  background: var(--action);
+  box-shadow: 0 0 0 7px color-mix(in srgb, var(--primary) 28%, transparent);
+}
+
+.clinic-map .leaflet-popup-content-wrapper,
+.clinic-map .leaflet-popup-tip {
+  background: var(--surface);
+  color: var(--foreground);
+  box-shadow: var(--shadow);
+}
+
+.clinic-map .leaflet-popup-content-wrapper {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+
+.clinic-map .leaflet-popup-content {
+  margin: 0.9rem 1rem;
+}
+
+.clinic-map .leaflet-popup-content a {
+  color: var(--action);
+}
+
+.clinic-map.leaflet-container {
+  z-index: 0;
+  background: var(--background-secondary);
+  font-family: inherit;
+}
+
+.clinic-map .leaflet-bar {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.clinic-map .leaflet-bar a {
+  background: var(--surface);
+  color: var(--foreground);
+  border-bottom-color: var(--border);
+  width: 2.25rem;
+  height: 2.25rem;
+  line-height: 2.25rem;
+}
+
+.clinic-map .leaflet-bar a:hover,
+.clinic-map .leaflet-bar a:focus {
+  background: var(--background-secondary);
+  color: var(--foreground);
+}
+
+.clinic-map .leaflet-control-attribution {
+  background: color-mix(in srgb, var(--background) 94%, white);
+  color: var(--foreground);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  max-width: min(100% - 1rem, 22rem);
+}
+
+.clinic-map .leaflet-control-attribution a {
+  color: var(--action);
+}
+
+.article-prose iframe {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
