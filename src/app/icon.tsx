@@ -14,9 +14,6 @@ export default function Icon() {
           alignItems: "center",
           justifyContent: "center",
           background: "#182F45",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
         }}
       >
         <div
