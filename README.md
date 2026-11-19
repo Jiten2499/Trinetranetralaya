@@ -160,7 +160,7 @@ Article pages are `/blog/<slug>`.
 The app is a standard Next.js project and does not assume a host in code.
 
 1. Set the environment variables on the host, including `NEXT_PUBLIC_SITE_URL`.
-2. `npm run build`
+2. `npm run build` (uses webpack so Tailwind’s PostCSS step does not depend on Turbopack’s local worker process)
 3. `npm start`, or connect the repository to a Next.js host such as Vercel.
 
 `cacheComponents` is enabled. Blog fetches are cached for about an hour. Clinic pages are static until the next build.
